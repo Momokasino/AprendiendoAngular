@@ -1,0 +1,8 @@
+<!-- app.component.html -->
+<h1>Consumiendo datos de una API desde un servicio</h1>
+<div>
+  <router-outlet></router-outlet>
+  <ul>
+    <li *ngFor="let user of userList">Name: {{user.name}}</li>
+  </ul> 
+</div>
