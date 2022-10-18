@@ -7,7 +7,7 @@ import { CookieService } from "ngx-cookie-service";
   providedIn: "root"
 })
 export class UsersService {
-  constructor(private http: HttpClient, private cookies: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(user: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/login', user);
@@ -18,17 +18,21 @@ export class UsersService {
   }
 
   setToken(token: any) {
-    this.cookies.set("token", token);
+    this.cookieService.set("token", token);
   }
-  getToken() {
-    return this.cookies.get("token");
+  getToken(): string {
+    return this.cookieService.get("token");
   }
 
   getUser() {
     return this.http.get("http://127.0.0.1:8000/api/infouser");
   }
+
   getUserLogged() {
-    const token = this.getToken();
-    // Aquí iría el endpoint para devolver el usuario para un token
+    return this.cookieService.get("token");
   }
+
+  // logout(){
+
+  // }
 }
