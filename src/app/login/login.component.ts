@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         console.log("Exito en el login");       
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
       }
     }) 
   }

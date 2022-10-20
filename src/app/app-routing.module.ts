@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent, pathMatch: "full" },
   { path: "home", component: HomeComponent, pathMatch: "full" },
   { path: "user", component: ProfileComponent, canActivate: [UserGuardGuard]},
+  { path: '',   redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

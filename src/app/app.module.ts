@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

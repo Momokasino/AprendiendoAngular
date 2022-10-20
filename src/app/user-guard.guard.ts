@@ -18,10 +18,10 @@ export class UserGuardGuard implements CanActivate {
     const cookie = this.cookieService.check('token');
     if (!cookie) {
       this.router.navigate(['/', 'login']);
+      return false;
     }else{
       return true;
-    }  
-    return false;
+    }    
   }
   
 }

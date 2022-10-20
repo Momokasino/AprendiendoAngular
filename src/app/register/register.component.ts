@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       },
       complete: () => {
         console.log("Subido a la base de datos con éxito");     
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
       }
     })
   }
