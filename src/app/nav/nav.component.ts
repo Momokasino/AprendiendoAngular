@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faHamburger } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +11,9 @@ export class NavComponent implements OnInit {
 
   login = "Inicia sesión";
   register = "Registate";
-  perfil = "Perfil"
+  perfil = "Perfil";
+
+  faHamburger = faHamburger;
 
   constructor() { }
 

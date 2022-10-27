@@ -1,7 +1,7 @@
 #fondo{
-    margin-top: 12%;
+    /* margin-top: 12%; */
     width: 100%;
-    min-height: 500px;
+    min-height: 600px;
     background-image: url("./../../assets/imagenes/fondo_burguers.webp");
     background-attachment: fixed;
     background-position: center;
