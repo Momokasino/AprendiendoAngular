@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
+import { environment } from "src/environments/environment";
+import { UserResponse } from "../models/user.interface";
 
 @Injectable({
   providedIn: "root"
@@ -10,11 +12,11 @@ export class UsersService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(user: any): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/login', user);
+    return this.http.post<UserResponse>(`${environment.apiUrl}/login`, user);
   }
 
   register(user: any): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/register', user);
+    return this.http.post<UserResponse>(`${environment.apiUrl}/register`, user);
   }
 
   setToken(token: any) {
@@ -24,15 +26,11 @@ export class UsersService {
     return this.cookieService.get("token");
   }
 
-  getUser() {
-    return this.http.get("http://127.0.0.1:8000/api/infouser");
-  }
-
   getUserLogged() {
     return this.cookieService.get("token");
   }
 
-  // logout(){
-
-  // }
+  logout(): void{
+    return this.cookieService.delete("token");
+  }
 }

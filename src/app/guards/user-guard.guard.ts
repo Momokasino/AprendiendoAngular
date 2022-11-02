@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -11,9 +11,7 @@ export class UserGuardGuard implements CanActivate {
 
   constructor(private cookieService: CookieService, private router: Router) {}
  
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     const cookie = this.cookieService.check('token');
     if (!cookie) {
@@ -21,7 +19,7 @@ export class UserGuardGuard implements CanActivate {
       return false;
     }else{
       return true;
-    }    
+    }
   }
   
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -13,11 +13,14 @@ export class NavComponent implements OnInit {
   register = "Registate";
   perfil = "Perfil";
 
+  isAdmin = false;
+
   faHamburger = faHamburger;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

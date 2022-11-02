@@ -1,3 +1,4 @@
+{{ isAdmin }} - Role
 <nav class="navbar fixed-top navbar-expand-lg bg-white">
   <div class="container-fluid">
     <a routerLink="/home"
@@ -32,19 +33,34 @@
           <a class="nav-link active fs-4 ms-lg-2" routerLink="">Bebidas</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active fs-4 me-lg-2" routerLink="">Pedido</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-4 me-lg-4" routerLink="">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-dark btn-lg fs-4" routerLink="/login">Inicia sesión</button>
-          </li>
-        </ul>
-      </span>
+      <ng-container *ngIf="!isAdmin; else viewAdmin">
+        <span class="navbar-text">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active fs-4 me-lg-2" routerLink="">Pedido</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fs-4 me-lg-4" routerLink="">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-dark btn-lg fs-4" routerLink="/login">Inicia sesión</button>
+            </li>
+          </ul>
+        </span>
+      </ng-container>
     </div>
   </div>
 </nav>
+
+<ng-template #viewAdmin>
+  <span class="navbar-text">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active fs-4 me-lg-2" routerLink="">Panel de Administrador</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active fs-4 me-lg-2" routerLink="">Perfil</a>
+      </li>
+    </ul>
+  </span>
+</ng-template>

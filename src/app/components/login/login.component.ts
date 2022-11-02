@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../services/user.service';
+import { UsersService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,8 +31,12 @@ export class LoginComponent implements OnInit {
         console.log(error);
       },
       complete: () => {
-        console.log("Exito en el login");       
-        this.router.navigateByUrl('/home');
+        console.log("Exito en el login");
+        if (this.email=="admin@admin.com") {
+          this.router.navigateByUrl('/admin');
+        }else{
+          this.router.navigateByUrl('/home');
+        }   
       }
     }) 
   }
