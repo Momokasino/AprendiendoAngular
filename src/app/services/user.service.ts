@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
 import { environment } from "src/environments/environment";
 import { UserResponse } from "../models/user.interface";
@@ -9,6 +9,7 @@ import { UserResponse } from "../models/user.interface";
   providedIn: "root"
 })
 export class UsersService {
+
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(user: any): Observable<any> {
