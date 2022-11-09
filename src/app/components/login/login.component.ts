@@ -32,6 +32,16 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         console.log("Exito en el login");
+        
+        this.userService.getUserInfo(this.email).subscribe({
+          next: (data) => {
+            console.log("entra al next");
+            
+            console.log(data);
+            
+          },
+        })
+
         if (this.email=="admin@admin.com") {
           this.router.navigateByUrl('/admin');
         }else{

@@ -27,8 +27,10 @@ export class UsersService {
     return this.cookieService.get("token");
   }
 
-  getUserLogged() {
-    return this.cookieService.get("token");
+  getUserInfo(email: any): Observable<any>  {
+    console.log("entra");
+    
+    return this.http.get(`${environment.apiUrl}/getUserInfo`, email);
   }
 
   logout(): void{
