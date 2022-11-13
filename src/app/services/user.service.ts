@@ -13,7 +13,7 @@ export class UsersService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(user: any): Observable<any> {
-    return this.http.post<UserResponse>(`${environment.apiUrl}/login`, user);
+    return this.http.post(`${environment.apiUrl}/login`, user);
   }
 
   register(user: any): Observable<any> {
@@ -27,10 +27,9 @@ export class UsersService {
     return this.cookieService.get("token");
   }
 
-  getUserInfo(email: any): Observable<any>  {
-    console.log("entra");
-    
-    return this.http.get(`${environment.apiUrl}/getUserInfo`, email);
+  getRoleUser(email: any): Observable<any>  {
+    console.log(' llega con email', email);
+    return this.http.get(`${environment.apiUrl}/getRoleUser/${email}`);
   }
 
   logout(): void{
