@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +22,6 @@ export class LoginComponent implements OnInit {
   login() {
 
     const user = {email: this.email, password: this.password};
-    const observable = new Observable((subscriber) => {
-      subscriber.next(1);
-    });
-
   
     this.userService.login(user).subscribe({
       next: (data) => {
@@ -41,6 +36,8 @@ export class LoginComponent implements OnInit {
       complete: () => {
         console.log("Exito en el login");
         this.getRoleUser(this.email);
+
+
         if (this.email=="admin@admin.com") {
           this.router.navigateByUrl('/admin');
         }else{
@@ -51,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   getRoleUser(email: String) {
-    console.log('entra al get user info aparte');
+    console.log('entra al get user info front');
     this.userService.getRoleUser(email);
   };
 }

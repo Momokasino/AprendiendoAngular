@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
 import { environment } from "src/environments/environment";
-import { UserResponse } from "../models/user.interface";
 
 @Injectable({
   providedIn: "root"
@@ -17,7 +16,7 @@ export class UsersService {
   }
 
   register(user: any): Observable<any> {
-    return this.http.post<UserResponse>(`${environment.apiUrl}/register`, user);
+    return this.http.post(`${environment.apiUrl}/register`, user);
   }
 
   setToken(token: any) {
@@ -29,7 +28,7 @@ export class UsersService {
 
   getRoleUser(email: any): Observable<any>  {
     console.log(' llega con email', email);
-    return this.http.get(`${environment.apiUrl}/getRoleUser/${email}`);
+    return this.http.get(`${environment.apiUrl}/getUserInfo/${email}`);
   }
 
   logout(): void{
