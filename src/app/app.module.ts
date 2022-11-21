@@ -15,6 +15,7 @@ import { NavComponent } from './components//nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './components//admin/admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AdminComponent } from './components//admin/admin.component';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

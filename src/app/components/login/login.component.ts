@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   
     this.userService.login(user).subscribe({
       next: (data) => {
-        // console.log(data.email);
-        
+        // console.log(data.email)   
         this.userService.setToken(data.access_token);
         
       },
@@ -35,10 +34,10 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         console.log("Exito en el login");
+
         this.getRoleUser(this.email);
 
-
-        if (this.email=="admin@admin.com") {
+        if (this.email=="admin@admin.com") {      
           this.router.navigateByUrl('/admin');
         }else{
           this.router.navigateByUrl('/home');
@@ -46,6 +45,7 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
 
   getRoleUser(email: String) {
     console.log('entra al get user info front');
