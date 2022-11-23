@@ -30,6 +30,7 @@ export class NavComponent implements OnInit {
       
       if (token != "") {
         this.isLogin = true;
+   
         console.log("pone el login a true");    
       }
   }
@@ -38,7 +39,7 @@ export class NavComponent implements OnInit {
     this.userService.logout();
     this.isLogin = false;
     console.log("pone el login a false");
-    
+
     this.router.navigateByUrl('/login');
   }
 
