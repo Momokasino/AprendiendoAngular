@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
   // public confirmPassword: string = "";
   // public passwordError: boolean = false;
 
+  submitted = false;
+
   userControl: FormGroup = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
@@ -47,7 +49,7 @@ export class RegisterComponent implements OnInit {
             Validators.maxLength(40)
           ]
         ],
-        confirmPassword: ['', Validators.required]
+        repeatPassword: ['', Validators.required]
       },
       {
         validators: [RegisterComponent.MatchValidator('password', 'repeatPassword')]
@@ -90,8 +92,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     console.warn(this.userControl.value);
     this.register();
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.userControl.controls;
   }
 
 }

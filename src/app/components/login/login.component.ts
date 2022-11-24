@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -31,12 +32,13 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
+        alert("usuario o contraseña incorrecto");
       },
       complete: () => {
         console.log("Exito en el login");
 
         this.getRoleUser(this.email);
-
+        
         if (this.email=="admin@admin.com") {      
           this.router.navigateByUrl('/admin');
         }else{
@@ -45,7 +47,6 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-
 
   getRoleUser(email: String) {
     console.log('entra al get user info front');

@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeComponent } from './components//home/home.component';
 import { ProfileComponent } from './components//profile/profile.component';
-import { NavComponent } from './components//nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './components//admin/admin.component';
@@ -25,7 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    NavComponent,
     AdminComponent
   ],
   imports: [

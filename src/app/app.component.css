@@ -2,3 +2,15 @@ body, html {
     margin: 0;
     -webkit-text-size-adjust: 100%;
 }
+
+#icon{
+    color: black;
+}
+
+.navbar-toggler{
+    border: 0;
+}
+
+a:hover{
+text-decoration: overline;
+}
