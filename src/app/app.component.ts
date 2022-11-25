@@ -1,6 +1,7 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
+import { BehaviorSubject } from 'rxjs';
 import { UsersService } from './services/user.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { UsersService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'my-app';
-  // token = this.userService.getToken();
-  token='';
+  token = this.userService.getToken();
 
+  public token$ = new BehaviorSubject(String);
+  
   faHamburger = faHamburger;
 
   constructor(public userService: UsersService, public router: Router) { }
