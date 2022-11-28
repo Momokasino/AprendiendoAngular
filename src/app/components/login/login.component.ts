@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         // console.log(data.email)   
         this.userService.setToken(data.access_token);
-        
+        this.userService.getRoleUser(this.email);    
       },
       error: (error) => {
         console.log(error);
@@ -36,20 +35,14 @@ export class LoginComponent implements OnInit {
       },
       complete: () => {
         console.log("Exito en el login");
-
-        this.getRoleUser(this.email);
-        
-        if (this.email=="admin@admin.com") {      
+    
+        if (parseInt(this.userService.getToken("rol")) == 1) {      
           this.router.navigateByUrl('/admin');
         }else{
           this.router.navigateByUrl('/home');
         }   
+                
       }
     })
   }
-
-  getRoleUser(email: String) {
-    console.log('entra al get user info front');
-    this.userService.getRoleUser(email);
-  };
 }

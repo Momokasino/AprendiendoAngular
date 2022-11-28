@@ -11,6 +11,8 @@ export class UsersService {
 
   public token$ = new BehaviorSubject<string>("");
 
+  rol$ = {};
+
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   login(user: any): Observable<any> {
@@ -25,17 +27,34 @@ export class UsersService {
     this.cookieService.set("token", token);
     this.token$.next(token);
   }
-  getToken(): string {
-    return this.cookieService.get("token");
+  getToken(name: any){
+    return this.cookieService.get(name);
   }
 
-  getRoleUser(email: any): Observable<any>  {
-    console.log(' llega con email', email);
-    return this.http.get(`${environment.apiUrl}/getUserInfo/${email}`);
+  setRolToken(token: any){
+    this.cookieService.set("rol", token);
+  }
+
+  getRoleUser(email: any){
+    console.log('llega con email: ', email);
+    this.http.get(`${environment.apiUrl}/getUserInfo/${email}`).subscribe({
+      next: (rol) => {
+        console.log('Su rol es: ', rol);
+        this.setRolToken(rol);            
+      },
+      error: (msg) => {
+        console.log('Error Getting Rol: ', msg);
+      },
+      complete: () => {
+        console.log("Rol en token");      
+      }
+    }) 
   }
 
   logout(): void{
     this.token$.next("");
+    this.cookieService.delete("rol")
     return this.cookieService.delete("token");
+    
   }
 }

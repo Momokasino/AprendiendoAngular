@@ -10,7 +10,7 @@ import { UsersService } from './services/user.service';
 })
 export class AppComponent{
   title = 'my-app';
-  token = this.userService.getToken();
+  token = this.userService.getToken("token");
   
   faHamburger = faHamburger;
 
