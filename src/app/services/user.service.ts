@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
 import { environment } from "src/environments/environment";
 
@@ -8,6 +8,8 @@ import { environment } from "src/environments/environment";
   providedIn: "root"
 })
 export class UsersService {
+
+  public token$ = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
@@ -21,6 +23,7 @@ export class UsersService {
 
   setToken(token: any) {
     this.cookieService.set("token", token);
+    this.token$.next(token);
   }
   getToken(): string {
     return this.cookieService.get("token");
@@ -32,6 +35,7 @@ export class UsersService {
   }
 
   logout(): void{
+    this.token$.next("");
     return this.cookieService.delete("token");
   }
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
-import { BehaviorSubject } from 'rxjs';
 import { UsersService } from './services/user.service';
 
 @Component({
@@ -12,8 +11,6 @@ import { UsersService } from './services/user.service';
 export class AppComponent{
   title = 'my-app';
   token = this.userService.getToken();
-
-  public token$ = new BehaviorSubject(String);
   
   faHamburger = faHamburger;
 
@@ -21,7 +18,6 @@ export class AppComponent{
   
   logout(){
     this.userService.logout();
-    
     this.router.navigateByUrl('/login');
   }
 
