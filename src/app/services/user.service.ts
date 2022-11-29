@@ -11,7 +11,7 @@ export class UsersService {
 
   public token$ = new BehaviorSubject<string>("");
 
-  rol$ = {};
+  public rol$ = new BehaviorSubject<number>(0);
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
@@ -33,6 +33,7 @@ export class UsersService {
 
   setRolToken(token: any){
     this.cookieService.set("rol", token);
+    this.rol$.next(token);
   }
 
   getRoleUser(email: any){
@@ -53,6 +54,7 @@ export class UsersService {
 
   logout(): void{
     this.token$.next("");
+    this.rol$.next(0);
     this.cookieService.delete("rol")
     return this.cookieService.delete("token");
     

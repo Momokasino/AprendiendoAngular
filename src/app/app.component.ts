@@ -11,6 +11,7 @@ import { UsersService } from './services/user.service';
 export class AppComponent{
   title = 'my-app';
   token = this.userService.getToken("token");
+  rol = 0;
   
   faHamburger = faHamburger;
 
@@ -18,10 +19,13 @@ export class AppComponent{
   
   logout(){
     this.userService.logout();
+    this.rol = 0;
     this.router.navigateByUrl('/login');
   }
 
-  login(){
+  login(){    
+    this.rol = parseInt(this.userService.getToken("rol"));
+    console.log(this.rol);
     this.router.navigateByUrl('/login');
   }
   
